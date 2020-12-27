@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Список сообщений</title>
+</head>
+<body>
+    <h1>Список сообщений</h1>
+    <div id="msg-list-div">
+
+    </div>
+    <script>
+        const msg_elem = document.querySelector('#msg-list-div');
+        fetch('/msg')
+        .then(res => res.json())
+        .then(content => {
+            let text = '';
+            content.forEach(item => text += `<li>${item.text} </li>`)
+            msg_elem.innerHTML = `<ol>${text}</ol>`;
+        });
+    </script>
+</body>
